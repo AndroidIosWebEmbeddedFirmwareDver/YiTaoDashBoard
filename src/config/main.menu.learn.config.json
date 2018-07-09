@@ -1,0 +1,250 @@
+{
+  "Menu": {
+    "vrsion": "1.0.0",
+    "theme": "dark",
+    "mode": "inline",
+    "defaultSelectedKeys": [
+      "page_banner"
+    ],
+    "defaultOpenKeys": [
+      "master_station_management"
+    ],
+    "style": "height: '100%'",
+    "SubMenu": [
+      {
+        "key": "/view/master/station/management",
+        "title": "主站管理",
+        "titleIcon": "user",
+        "desc": "主站管理",
+        "Items": [
+          {
+            "key": "/page/banner",
+            "desc": "页面广告",
+            "exact_redirect_location": {
+              "pathname": "/view/master/station/management/page/banner",
+              "state": {
+                "desc": "page_banner",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/cooperative/partner",
+            "desc": "合作伙伴",
+            "exact_redirect_location": {
+              "pathname": "/view/master/station/management/cooperative/partner",
+              "state": {
+                "desc": "cooperative_partner",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/classification/management",
+        "title": "分类管理",
+        "titleIcon": "laptop",
+        "desc": "分类管理",
+        "Items": [
+          {
+            "key": "/first/class/classification",
+            "desc": "一级分类",
+            "exact_redirect_location": {
+              "pathname": "/view/classification/management/first/class/classification",
+              "state": {
+                "desc": "first_class_classification",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/second/class/classification",
+            "desc": "二级分类",
+            "exact_redirect_location": {
+              "pathname": "/view/classification/management/second/class/classification",
+              "state": {
+                "desc": "two_class_classification",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/order/management",
+        "title": "订单管理",
+        "titleIcon": "notification",
+        "desc": "订单管理",
+        "Items": [
+          {
+            "key": "/commodity/order",
+            "desc": "商品订单",
+            "exact_redirect_location": {
+              "pathname": "/view/order/management/commodity/order",
+              "state": {
+                "desc": "commodity_order",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/demand/order",
+            "desc": "需求订单",
+            "exact_redirect_location": {
+              "pathname": "/view/order/management/demand/order",
+              "state": {
+                "desc": "demand_order",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/member/management",
+        "title": "会员管理",
+        "titleIcon": "video-camera",
+        "desc": "会员管理",
+        "Items": [
+          {
+            "key": "/membership/system",
+            "desc": "会员体系",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/membership/system",
+              "state": {
+                "desc": "membership_system",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/members/view",
+            "desc": "会员查看",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/members/view",
+              "state": {
+                "desc": "members_view",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/real/name/authentication",
+            "desc": "实名认证",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/real/name/authentication",
+              "state": {
+                "desc": "real_name_authentication",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/system/setup",
+        "title": "系统设置",
+        "titleIcon": "upload",
+        "desc": "system_setup",
+        "Items": [
+          {
+            "key": "/system_setup1",
+            "desc": "system_setup1",
+            "exact_redirect_location": {
+              "pathname": "/view/system/setup/system_setup1",
+              "state": {
+                "desc": "option10",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "system_setup2",
+            "desc": "system_setup2"
+          }
+        ]
+      },
+      {
+        "key": "/view/other/settings",
+        "title": "其他设置",
+        "titleIcon": "bar-chart",
+        "desc": "subnav 6",
+        "Items": [
+          {
+            "key": "/certificate/chain/template/setting",
+            "desc": "证书模板",
+            "exact_redirect_location": {
+              "pathname": "/view/other/settings/certificate/chain/template/setting",
+              "state": {
+                "desc": "证书模板",
+                "id": "123123",
+                "fromDashboard": true,
+                "parentMsg": {
+                  "key": "",
+                  "title": "",
+                  "titleIcon": "",
+                  "desc": ""
+                }
+              }
+            }
+          },
+          {
+            "key": "/certificate/other_settings2",
+            "desc": "other_settings2"
+          }
+        ]
+      },
+      {
+        "key": "/view/demo",
+        "title": "组件学习",
+        "titleIcon": "shop",
+        "desc": "组件学习",
+        "Items": [
+          {
+            "key": "/ExampleOfAntDesignButton",
+            "desc": "Button",
+            "exact_redirect_location": {
+              "pathname": "/view/demo/ExampleOfAntDesignButton",
+              "state": {
+                "desc": "Button",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/ExampleOfAntDesignIcon",
+            "desc": "Icon",
+            "exact_redirect_location": {
+              "pathname": "/view/demo/ExampleOfAntDesignIcon",
+              "state": {
+                "desc": "Icon",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "12",
+            "desc": "option12"
+          },
+          {
+            "key": "13",
+            "desc": "option13"
+          }
+        ]
+      }
+    ]
+  }
+}

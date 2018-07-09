@@ -1,0 +1,38 @@
+{
+  "name": "ytdesginmateradmin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start_old": "react-scripts start",
+    "start": "react-app-rewired start",
+    "build_old": "react-scripts build",
+    "build": "react-app-rewired build",
+    "test_old": "react-scripts test --env=jsdom",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "antd": "^3.4.1",
+    "babel": "^6.23.0",
+    "css-loader": "^0.28.11",
+    "react": "^16.3.1",
+    "react-amap": "^1.2.7",
+    "react-amap-plugin-geolocation": "^0.0.2",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^3.7.2",
+    "redux-devtools": "^3.4.1",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "video-react": "^0.10.4",
+    "webpack": "^4.6.0"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.7.0",
+    "react-app-rewire-less": "^2.1.1",
+    "react-app-rewired": "^1.5.0"
+  }
+}

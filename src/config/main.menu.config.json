@@ -1,0 +1,278 @@
+{
+  "Menu": {
+    "vrsion": "1.0.0",
+    "theme": "dark",
+    "mode": "inline",
+    "defaultSelectedKeys": [
+      "page_banner"
+    ],
+    "defaultOpenKeys": [
+      "master_station_management"
+    ],
+    "style": "height: '100%'",
+    "SubMenu": [
+      {
+        "key": "/view/master/station/management",
+        "title": "主站管理",
+        "titleIcon": "user",
+        "desc": "主站管理",
+        "Items": [
+          {
+            "key": "/page/banner",
+            "desc": "轮播广告",
+            "exact_redirect_location": {
+              "pathname": "/view/master/station/management/page/banner",
+              "state": {
+                "desc": "page_banner",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/page/asdads",
+            "desc": "页面广告",
+            "exact_redirect_location": {
+              "pathname": "/view/master/station/management/page/asdads",
+              "state": {
+                "desc": "page_asdads",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/cooperative/partner",
+            "desc": "合作伙伴",
+            "exact_redirect_location": {
+              "pathname": "/view/master/station/management/cooperative/partner",
+              "state": {
+                "desc": "cooperative_partner",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/classification/management",
+        "title": "分类管理",
+        "titleIcon": "laptop",
+        "desc": "分类管理",
+        "Items": [
+          {
+            "key": "/first/class/classification",
+            "desc": "一级分类",
+            "exact_redirect_location": {
+              "pathname": "/view/classification/management/first/class/classification",
+              "state": {
+                "desc": "first_class_classification",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/second/class/classification",
+            "desc": "二级分类",
+            "exact_redirect_location": {
+              "pathname": "/view/classification/management/second/class/classification",
+              "state": {
+                "desc": "two_class_classification",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/publish/class/classification",
+            "desc": "分类推广",
+            "exact_redirect_location": {
+              "pathname": "/view/classification/management/publish/class/classification",
+              "state": {
+                "desc": "publish_class_classification",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/order/management",
+        "title": "订单管理",
+        "titleIcon": "notification",
+        "desc": "订单管理",
+        "Items": [
+          {
+            "key": "/commodity/order",
+            "desc": "商品订单",
+            "exact_redirect_location": {
+              "pathname": "/view/order/management/commodity/order",
+              "state": {
+                "desc": "commodity_order",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/demand/order",
+            "desc": "需求订单",
+            "exact_redirect_location": {
+              "pathname": "/view/order/management/demand/order",
+              "state": {
+                "desc": "demand_order",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/member/management",
+        "title": "会员管理",
+        "titleIcon": "video-camera",
+        "desc": "会员管理",
+        "Items": [
+          {
+            "key": "/membership/system",
+            "desc": "会员体系",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/membership/system",
+              "state": {
+                "desc": "membership_system",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/members/view",
+            "desc": "会员查看",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/members/view",
+              "state": {
+                "desc": "members_view",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/real/name/authentication",
+            "desc": "实名认证",
+            "exact_redirect_location": {
+              "pathname": "/view/member/management/real/name/authentication",
+              "state": {
+                "desc": "real_name_authentication",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/release/management",
+        "title": "发布审核",
+        "titleIcon": "appstore",
+        "desc": "发布审核",
+        "Items": [
+          {
+            "key": "/order/commondity",
+            "desc": "原创商品",
+            "exact_redirect_location": {
+              "pathname": "/view/release/management/order/commondity",
+              "state": {
+                "desc": "order_commondity",
+                "id": "123125",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/order/service",
+            "desc": "设计服务",
+            "exact_redirect_location": {
+              "pathname": "/view/release/management/order/service",
+              "state": {
+                "desc": "order_service",
+                "id": "123126",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "/order/demand",
+            "desc": "设计需求",
+            "exact_redirect_location": {
+              "pathname": "/view/release/management/order/demand",
+              "state": {
+                "desc": "order_demand",
+                "id": "123127",
+                "fromDashboard": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "key": "/view/system/setup",
+        "title": "系统设置",
+        "titleIcon": "upload",
+        "desc": "system_setup",
+        "Items": [
+          {
+            "key": "/ministration_personnel",
+            "desc": "管理人员",
+            "exact_redirect_location": {
+              "pathname": "/view/system/setup/ministration_personnel",
+              "state": {
+                "desc": "ministration_personnel",
+                "id": "123123",
+                "fromDashboard": true
+              }
+            }
+          },
+          {
+            "key": "system_setup2",
+            "desc": "system_setup2"
+          }
+        ]
+      },
+      {
+        "key": "/view/other/settings",
+        "title": "其他设置",
+        "titleIcon": "bar-chart",
+        "desc": "subnav 6",
+        "Items": [
+          {
+            "key": "/certificate/chain/template/setting",
+            "desc": "证书模板",
+            "exact_redirect_location": {
+              "pathname": "/view/other/settings/certificate/chain/template/setting",
+              "state": {
+                "desc": "证书模板",
+                "id": "123123",
+                "fromDashboard": true,
+                "parentMsg": {
+                  "key": "",
+                  "title": "",
+                  "titleIcon": "",
+                  "desc": ""
+                }
+              }
+            }
+          },
+          {
+            "key": "/certificate/other_settings2",
+            "desc": "other_settings2"
+          }
+        ]
+      }
+    ]
+  }
+}
