@@ -52,6 +52,8 @@ export default class DialogModalMmanage {
     static showInfo(title: String, content: String, ) {
         Modal.info({
             title: title,
+            width: 540,
+            okText: '确定',
             content: (
                 <div>
                     <p>{content}</p>

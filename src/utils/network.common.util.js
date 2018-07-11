@@ -14,7 +14,8 @@ export default class NetworkCommonUtil {
     // 处理状态
     static SERVER_HTTP_TASK_STATUS_SUCCESS = 1001;
     static SERVER_HTTP_TASK_STATUS_ERROR = 1002;
-    static SERVERURL = 'http://127.0.0.1:8080'; // 服务端URL
+    // static SERVERURL = 'http://127.0.0.1:8080'; // 服务端URL
+    static SERVERURL = 'http://106.15.90.77/back/site/api'; // 服务端URL
     // static FILE_SERVERURL = 'http://192.168.2.111:8080'; // 文件服务端
     static FILE_SERVERURL = 'http://106.15.90.77:7777/YtFileCenterApi'; // 文件服务端
 
@@ -62,18 +63,21 @@ export default class NetworkCommonUtil {
 
 
     //发布审核
-
+    // 设计需求
     static API_RELEASE_MANAGEMENT_OF_COMMONIDITY_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/commodity/order/find/pages/by/status';
     static API_RELEASE_MANAGEMENT_OF_COMMONIDITY_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/commodity/order/status/update/by/admin';
 
-
+    // 设计服务
     static API_RELEASE_MANAGEMENT_OF_SERVICE_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/service/order/find/pages/by/status';
     static API_RELEASE_MANAGEMENT_OF_SERVICE_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/service/order/status/update/by/admin';
 
-
+    // 原创商品
     static API_RELEASE_MANAGEMENT_OF_DEMAND_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/find/pages/by/status';
     static API_RELEASE_MANAGEMENT_OF_DEMAND_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/status/update/by/admin';
 
+    // 实名认证
+    static API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/font/siete/user/rna/page/orders';
+    static API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/status/update/by/admin';
 
     /**
      * GET 网络请求
