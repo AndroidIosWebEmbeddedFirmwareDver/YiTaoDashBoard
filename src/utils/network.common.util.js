@@ -75,9 +75,10 @@ export default class NetworkCommonUtil {
     static API_RELEASE_MANAGEMENT_OF_DEMAND_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/find/pages/by/status';
     static API_RELEASE_MANAGEMENT_OF_DEMAND_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/status/update/by/admin';
 
+    // 会员管理
     // 实名认证
     static API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_FIND_PAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/font/siete/user/rna/page/orders';
-    static API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/demand/order/status/update/by/admin';
+    static API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_CHANGE_STATUS = NetworkCommonUtil.SERVERURL + '/back/site/api/font/siete/user/rna/update/rnastatus';
 
     /**
      * GET 网络请求

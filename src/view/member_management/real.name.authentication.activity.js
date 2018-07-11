@@ -319,7 +319,8 @@ export default class OrderDemandActivity extends BaseTableActivityComponent {
         }));
         let param = {
             id: data.id,
-            status:status,
+            uid: data.uid,
+            rnaStatus:status,
         };
         NetworkCommonUtil.httpPostRequest(JSON.stringify(param), NetworkCommonUtil.API_RELEASE_MANAGEMENT_OF_AUTHENTICATION_CHANGE_STATUS).then((data: any) => {
             // DialogCommonManage.showNormalMessage(JSON.stringify(data));
