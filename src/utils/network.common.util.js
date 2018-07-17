@@ -33,6 +33,17 @@ export default class NetworkCommonUtil {
     static API_COMMON_TYPE_FINDPAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/findPages';
 
 
+
+
+    //分类推广管理
+    static API_COMMON_TYPE_PUBLISH_CREATE = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/publish/create';
+    static API_COMMON_TYPE_PUBLISH_FINAD_TYPE_BY_LEVEL = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/publish/find/all/by/level';//通过Level查询一堆一级分类
+    static API_COMMON_TYPE_PUBLISH_FIND_USER_BY_TYPE = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/publish/find/all/user/by/common/type'; //通过一级分类id查询一堆用户
+    static API_COMMON_TYPE_PUBLISH_FIND_COMMONITY_BY_USER_AND_TYPE = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/publish/find/all/commodity/by/common/type/and/user';//通过分类id和用户id查询一堆商品
+    static API_COMMON_TYPE_PUBLISH_FINDPAGES = NetworkCommonUtil.SERVERURL + '/back/site/api/common/type/publish/find/pages';//查询一堆分页推广数据
+
+
+
     //轮播广告管理
     static API_BANAR_ADS_CONFIG_CREATE = NetworkCommonUtil.SERVERURL + '/back/site/api/asd/banar/config/create';
     static API_BANAR_ADS_CONFIG_DELETE = NetworkCommonUtil.SERVERURL + '/back/site/api/asd/banar/config/delete';

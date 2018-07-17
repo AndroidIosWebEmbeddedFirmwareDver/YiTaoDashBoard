@@ -44,32 +44,32 @@ class PublishClassClassificationActivitySelect extends BaseActivityComponent {
     }
 
 
-    componentWillReceiveProps(nextProps) {
-        super.componentWillReceiveProps(nextProps);
-        if (
-            (this.props.selectHandleDataQueryParams === null && nextProps.selectHandleDataQueryParams !== null)
-            ||
-            (nextProps.selectHandleDataQueryParams && this.props.selectHandleDataQueryParams &&
-                nextProps.selectHandleDataQueryParams.data && this.props.selectHandleDataQueryParams.data
-                && (nextProps.selectHandleDataQueryParams.data.id !== this.props.selectHandleDataQueryParams.data.id)
-            )
-        ) {
-
-            console.log('init data..........');
-            this.state.selectHandleDataQueryUrl = nextProps.selectHandleDataQueryUrl;
-            this.state.selectHandleDataQueryParams = nextProps.selectHandleDataQueryParams;
-            this.setState({
-                selectHandleDataQueryUrl: nextProps.selectHandleDataQueryUrl,
-                selectHandleDataQueryParams: nextProps.selectHandleDataQueryParams,
-            });
-            this.selectHandleInitData();
-        } else if (this.props.selectHandleDataQueryParams !== null && nextProps.selectHandleDataQueryParams === null) {
-            this.state.selectHandleDataShowIndex = null;
-            this.setState({
-                selectHandleDataShowIndex: null,
-            });
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     super.componentWillReceiveProps(nextProps);
+    //     if (
+    //         (this.props.selectHandleDataQueryParams === null && nextProps.selectHandleDataQueryParams !== null)
+    //         ||
+    //         (nextProps.selectHandleDataQueryParams && this.props.selectHandleDataQueryParams &&
+    //             nextProps.selectHandleDataQueryParams.data && this.props.selectHandleDataQueryParams.data
+    //             && (nextProps.selectHandleDataQueryParams.data.id !== this.props.selectHandleDataQueryParams.data.id)
+    //         )
+    //     ) {
+    //
+    //         console.log('init data..........');
+    //         this.state.selectHandleDataQueryUrl = nextProps.selectHandleDataQueryUrl;
+    //         this.state.selectHandleDataQueryParams = nextProps.selectHandleDataQueryParams;
+    //         this.setState({
+    //             selectHandleDataQueryUrl: nextProps.selectHandleDataQueryUrl,
+    //             selectHandleDataQueryParams: nextProps.selectHandleDataQueryParams,
+    //         });
+    //         this.selectHandleInitData();
+    //     } else if (this.props.selectHandleDataQueryParams !== null && nextProps.selectHandleDataQueryParams === null) {
+    //         this.state.selectHandleDataShowIndex = null;
+    //         this.setState({
+    //             selectHandleDataShowIndex: null,
+    //         });
+    //     }
+    // }
 
 
     componentDidUpdate() {
@@ -78,19 +78,26 @@ class PublishClassClassificationActivitySelect extends BaseActivityComponent {
     }
 
     selectHandleInitData = () => {
-        if (this.state.selectHandleDataQueryUrl && this.state.selectHandleDataQueryParams && this.state.selectHandleDataQueryParams.data) {
+
+        console.log('--------' + (this.props.selectHandleDataQueryParams !== null ? this.props.selectHandleDataQueryParams.level : ''));
+
+        if (this.props.selectHandleDataQueryParams && this.props.selectHandleDataQueryUrl) {
             this.setState({
                 selectHandleDataShowIndex: null,
+                selectHandleResponseData: [],
             });
-
-            NetworkCommonUtil.httpPostRequest(JSON.stringify(this.state.selectHandleDataQueryParams), this.state.selectHandleDataQueryUrl).then((data: any) => {
+            NetworkCommonUtil.httpPostRequest(JSON.stringify(this.props.selectHandleDataQueryParams), this.props.selectHandleDataQueryUrl
+            ).then((data: any) => {
                 // DialogCommonManage.showNormalMessage(JSON.stringify(data));
                 if (data && data.code === NetworkCommonUtil.SERVER_HTTP_TASK_STATUS_SUCCESS) {
                     if (data.data) {
+                        let index = 1;
                         if (data.data.length > 0) {
                             data.data.map((item) => {
                                 item['key'] = item.id;
-                                item['value'] = item.id;
+                                // item['value'] = item.id;
+                                item['value'] = index;
+                                index++;
                             });
 
                             this.setState({
@@ -101,6 +108,57 @@ class PublishClassClassificationActivitySelect extends BaseActivityComponent {
                                 selectHandleResponseData: [],
                             });
                         }
+                    } else {
+                        this.setState({
+                            selectHandleResponseData: [],
+                        });
+                    }
+                } else if (data) {
+                    DialogCommonManage.showNormalMessage(data.msg + '');
+                } else {
+                    DialogCommonManage.showNormalMessage('请求网络出错');
+                }
+            });
+        }
+    };
+
+
+    selectHandleInitData1 = (selectHandleDataQueryParams, selectHandleDataQueryUrl) => {
+        this.setState({
+            selectHandleDataShowIndex: null,
+            selectHandleResponseData: [],
+        });
+        if (selectHandleDataQueryParams && selectHandleDataQueryUrl) {
+
+            // console.log('--------' + (selectHandleDataQueryParams ? selectHandleDataQueryParams.level : ''));
+            NetworkCommonUtil.httpPostRequest(
+                JSON.stringify(selectHandleDataQueryParams)
+                , selectHandleDataQueryUrl
+            ).then((data: any) => {
+                // DialogCommonManage.showNormalMessage(JSON.stringify(data));
+                if (data && data.code === NetworkCommonUtil.SERVER_HTTP_TASK_STATUS_SUCCESS) {
+                    if (data.data) {
+                        let index = 1;
+                        if (data.data.length > 0) {
+                            data.data.map((item) => {
+                                item['key'] = item.id;
+                                // item['value'] = item.id;
+                                item['value'] = index;
+                                index++;
+                            });
+
+                            this.setState({
+                                selectHandleResponseData: data.data,
+                            });
+                        } else {
+                            this.setState({
+                                selectHandleResponseData: [],
+                            });
+                        }
+                    } else {
+                        this.setState({
+                            selectHandleResponseData: [],
+                        });
                     }
                 } else if (data) {
                     DialogCommonManage.showNormalMessage(data.msg + '');
@@ -112,7 +170,7 @@ class PublishClassClassificationActivitySelect extends BaseActivityComponent {
     };
 
     selectHandleChange = (value) => {
-        // console.log(`selected ${value}`);
+        console.log(`selected ${value}`);
         if (this.state.selectHandleResponseData && this.state.selectHandleResponseData.length > value - 1) {
             // this.state.selectHandleDataShowIndex=value;
             this.setState({
@@ -149,7 +207,6 @@ class PublishClassClassificationActivitySelect extends BaseActivityComponent {
     };
 
     render(): * {
-        console.log('selectHandleDataShowIndex->' + this.state.selectHandleDataShowIndex);
         return (
             <Select
                 showSearch
@@ -198,26 +255,50 @@ class PublishClassClassificationActivityEditModalContent extends BaseActivityCom
     };
 
     selectHandleChange = (data, type) => {
-
-        console.log(`selected ${data} --- ${type}`);
+        // console.log(`selected ${data} --- ${type}`);
         switch (type) {
             case 'selectOfFirstType':
+                this.state.selectOfFirstType = data;
                 this.setState({
                     selectOfFirstType: data,
                     selectOfPublisher: null,
                     selectOfPublishCom: null,
                 });
+                this.userSelect.selectHandleInitData1(this.state.selectOfFirstType ? {
+                        level: 2,
+                        data: this.state.selectOfFirstType
+                        , type: this.state.selectOfFirstType, user: {}, commodity: {}
+                    } : null,
+                    NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FIND_USER_BY_TYPE
+                );
+                this.commoditySelect.selectHandleInitData1(null, null);
+                if (this.props.onSelectParentHandleChange) {
+                    this.props.onSelectParentHandleChange(data, type);
+                }
                 return;
             case 'selectOfPublisher':
+                this.state.selectOfPublisher = data;
                 this.setState({
                     selectOfPublisher: data,
                     selectOfPublishCom: null,
                 });
+                this.commoditySelect.selectHandleInitData1(this.state.selectOfFirstType && this.state.selectOfPublisher ? {
+                    level: 3,
+                    data: this.state.selectOfPublisher
+                    , type: this.state.selectOfFirstType, user: this.state.selectOfPublisher, commodity: {}
+                } : null, NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FIND_COMMONITY_BY_USER_AND_TYPE);
+                if (this.props.onSelectParentHandleChange) {
+                    this.props.onSelectParentHandleChange(data, type);
+                }
                 return;
             case 'selectOfPublishCom':
+                this.state.selectOfPublishCom = data;
                 this.setState({
                     selectOfPublishCom: data,
                 });
+                if (this.props.onSelectParentHandleChange) {
+                    this.props.onSelectParentHandleChange(data, type);
+                }
                 return;
         }
     };
@@ -245,9 +326,12 @@ class PublishClassClassificationActivityEditModalContent extends BaseActivityCom
                     <span>绑定一级分类：</span>
                     <PublishClassClassificationActivitySelect
                         selectPlaceholder="请选择要绑定的一级分类"
-                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_FIND_ALL_BY_LEVEL}
-                        selectHandleDataQueryParams={{level: 1, data: {}}}
+                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FINAD_TYPE_BY_LEVEL}
+                        selectHandleDataQueryParams={{level: 1, data: {}, type: {level: 1,}, user: {}, commodity: {}}}
+                        // selectHandleDataQueryParams={'type':{level: 1, data: {}}}
                         selectHandleChange={(data) => this.selectHandleChange(data, 'selectOfFirstType')}
+
+                        ref={select => this.typeSelect = select}
                     />
                 </div>
 
@@ -256,12 +340,15 @@ class PublishClassClassificationActivityEditModalContent extends BaseActivityCom
                     <span>绑定推广人员：</span>
                     <PublishClassClassificationActivitySelect
                         selectPlaceholder="请选择要绑定的推广人员"
-                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_FIND_ALL_BY_LEVEL}
+                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FIND_USER_BY_TYPE}
                         selectHandleDataQueryParams={this.state.selectOfFirstType ? {
-                            level: 1,
+                            level: 2,
                             data: this.state.selectOfFirstType
+                            , type: this.state.selectOfFirstType, user: {}, commodity: {}
                         } : null}
                         selectHandleChange={(data) => this.selectHandleChange(data, 'selectOfPublisher')}
+
+                        ref={select => this.userSelect = select}
                     />
 
                 </div>
@@ -270,12 +357,15 @@ class PublishClassClassificationActivityEditModalContent extends BaseActivityCom
                     <span>绑定推广作品：</span>
                     <PublishClassClassificationActivitySelect
                         selectPlaceholder="请选择要绑定的推广作品"
-                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_FIND_ALL_BY_LEVEL}
+                        selectHandleDataQueryUrl={NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FIND_COMMONITY_BY_USER_AND_TYPE}
                         selectHandleDataQueryParams={this.state.selectOfFirstType && this.state.selectOfPublisher ? {
-                            level: 1,
-                            data: this.state.selectOfPublisher,
+                            level: 3,
+                            data: this.state.selectOfPublisher
+                            , type: this.state.selectOfFirstType, user: this.state.selectOfPublisher, commodity: {}
                         } : null}
                         selectHandleChange={(data) => this.selectHandleChange(data, 'selectOfPublishCom')}
+
+                        ref={select => this.commoditySelect = select}
                     />
                 </div>
             </div>
@@ -293,9 +383,10 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
         //使用...this.state,继承父类state
         this.state = {
             ...this.state,
-            newTypeName: '',
-            newTypeLevel: 2,
-            newTypeParentId: -1,
+            publishDesc: '',
+            selectOfFirstType: null,//一级分类
+            selectOfPublisher: null,//推广人员
+            selectOfPublishCom: null,//推广作品
         };
     }
 
@@ -318,12 +409,9 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
             page: page >= 0 ? page : this.state.tableNowPage,
             size: this.state.tablePageSize,
             sort: this.state.tablePageDateSort,
-            sortDirecion: this.state.tablePageDateSortDirecion,
-            data: {
-                level: this.state.newTypeLevel,
-            }
+            sortDirecion: this.state.tablePageDateSortDirecion
         };
-        NetworkCommonUtil.httpPostRequest(JSON.stringify(param), NetworkCommonUtil.API_COMMON_TYPE_FINDPAGES).then((data: any) => {
+        NetworkCommonUtil.httpPostRequest(JSON.stringify(param), NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_FINDPAGES).then((data: any) => {
             // DialogCommonManage.showNormalMessage(JSON.stringify(data));
             if (data && data.code === NetworkCommonUtil.SERVER_HTTP_TASK_STATUS_SUCCESS) {
                 if (data.data) {
@@ -345,6 +433,7 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
                         data.data.data.map((item) => {
                             item['showDelete'] = true;
                             item['edit'] = "删除";
+                            item['name'] = '由于【' + item.publishDesc + '】的原因，在分类【' + item.commonTypeName + '】下推广了【' + item.publisherName + '】的【' + item.commodityOrderName + '】作品';
                             item['createdDateTime'] = DateFormatUtil.format(new Date(item.createdDateTime), 'yyyy-MM-dd hh:mm:ss');
                             item['modifiedDateTime'] = DateFormatUtil.format(new Date(item.modifiedDateTime), 'yyyy-MM-dd hh:mm:ss');
                         });
@@ -377,27 +466,37 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
      * @returns {Array}
      */
     netWorkCreateNew(): boolean {
-        if (!this.state.newTypeName) {
-            DialogCommonManage.showNormalMessage('新类型名称不能为空');
+        if (this.state.publishDesc <= 0) {
+            DialogCommonManage.showNormalMessage('请输入推广理由');
             return;
         }
-        if (this.state.newTypeParentId <= 0) {
-            DialogCommonManage.showNormalMessage('二级分类必须绑定一个一级分类');
+        if (!this.state.selectOfFirstType) {
+            DialogCommonManage.showNormalMessage('请选择一级分类');
             return;
         }
+        if (this.state.selectOfPublisher <= 0) {
+            DialogCommonManage.showNormalMessage('请选择推广设计师');
+            return;
+        }
+        if (this.state.selectOfPublishCom <= 0) {
+            DialogCommonManage.showNormalMessage('请选择设计师原创作品');
+            return;
+        }
+
         //加载中
         this.setState(preState => ({
             modalIsConfirmLoading: !preState.modalIsConfirmLoading,
         }));
         let param = {
-            name: this.state.newTypeName,
-            level: this.state.newTypeLevel,
-            parentId: this.state.newTypeParentId,
+            type: this.state.selectOfFirstType,
+            user: this.state.selectOfPublisher,
+            commodity: this.state.selectOfPublishCom,
+            publishDesc: this.state.publishDesc
         };
-        NetworkCommonUtil.httpPostRequest(JSON.stringify(param), NetworkCommonUtil.API_COMMON_TYPE_CREATE).then((data: any) => {
+        NetworkCommonUtil.httpPostRequest(JSON.stringify(param), NetworkCommonUtil.API_COMMON_TYPE_PUBLISH_CREATE).then((data: any) => {
             // DialogCommonManage.showNormalMessage(JSON.stringify(data));
             if (data && data.code === NetworkCommonUtil.SERVER_HTTP_TASK_STATUS_SUCCESS) {
-                DialogCommonManage.showNormalMessage('新增二级分类成功');
+                DialogCommonManage.showNormalMessage('新增推广成功');
                 this.loadNetWorkData();
             } else if (data) {
                 DialogCommonManage.showNormalMessage(data.msg + '');
@@ -479,19 +578,41 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
         return '新增分类推广';
     }
 
-    onSelectParentHandleChange(data) {
-        console.log(this.consoleLogTag(), JSON.stringify(data));
-        this.setState({
-            newTypeParentId: data.id,
-        });
-    }
+
+    onSelectParentHandleChange = (data, type) => {
+        switch (type) {
+            case 'selectOfFirstType':
+                this.state.selectOfFirstType = data;
+                this.setState({
+                    selectOfFirstType: data,
+                    selectOfPublisher: null,
+                    selectOfPublishCom: null,
+                });
+
+                return;
+            case 'selectOfPublisher':
+                this.state.selectOfPublisher = data;
+                this.setState({
+                    selectOfPublisher: data,
+                    selectOfPublishCom: null,
+                });
+
+                return;
+            case 'selectOfPublishCom':
+                this.state.selectOfPublishCom = data;
+                this.setState({
+                    selectOfPublishCom: data,
+                });
+                return;
+        }
+    };
 
     modalOnGengerModalContent(): * {
         return (
             <PublishClassClassificationActivityEditModalContent
-                value={this.state.newTypeName}
+                value={this.state.publishDesc}
                 onChange={(e) => this.onNewInputChange(e)}
-                onSelectParentHandleChange={(e) => this.onSelectParentHandleChange(e)}
+                onSelectParentHandleChange={(data, type) => this.onSelectParentHandleChange(data, type)}
             />
         );
     }
@@ -499,11 +620,11 @@ export default class PublishClassClassificationActivity extends BaseTableActivit
     onNewInputChange(e) {
         if (e) {
             this.setState({
-                newTypeName: e.target.value
+                publishDesc: e.target.value
             });
         } else {
             this.setState({
-                newTypeName: ''
+                publishDesc: ''
             });
         }
     }
